@@ -223,6 +223,18 @@ namespace Nez.Systems
 		}
 
 		/// <summary>
+		/// For bulk use. Add an asset directly into the dictionary. Loading is done by the dev.
+		/// </summary>
+		/// <param name="name">The asset's generic name key.</param>
+		public void AddAsset(string name, object asset)
+		{
+			LoadedAssets.Add(name, asset);
+
+			if(asset is IDisposable disposable)
+				DisposableAssets.Add(disposable);
+		}
+
+		/// <summary>
 		/// loads a json file into a string.
 		/// </summary>
 		/// <returns>The json string.</returns>
