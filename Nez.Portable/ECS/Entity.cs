@@ -205,6 +205,10 @@ namespace Nez
 			Components.OnEntityTransformChanged(comp);
 		}
 
+//borrowed idea from unity but did I even use it?
+		public virtual void OnTransformParentChanged()
+		{}
+
 
 		#region Fluent setters
 

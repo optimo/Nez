@@ -294,10 +294,16 @@ namespace Nez
 				return this;
 
 			if (_parent != null)
+			{
 				_parent._children.Remove(this);
+				Entity.OnTransformParentChanged();
+			}
 
 			if (parent != null)
+			{
 				parent._children.Add(this);
+				Entity.OnTransformParentChanged();
+			}
 
 			_parent = parent;
 			SetDirty(DirtyType.PositionDirty);
