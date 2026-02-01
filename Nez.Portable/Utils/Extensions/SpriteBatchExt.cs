@@ -118,7 +118,7 @@ namespace Nez
 		                                 Color color, float thickness)
 		{
 			spriteBatch.Draw(Graphics.Instance.PixelTexture, start, Graphics.Instance.PixelTexture.SourceRect, color,
-				angle, new Vector2(0f, 0.5f), new Vector2(length, thickness), SpriteEffects.None, 0);
+				angle, Vector2.Zero, new Vector2(length, thickness), SpriteEffects.None, 0);
 		}
 
 
