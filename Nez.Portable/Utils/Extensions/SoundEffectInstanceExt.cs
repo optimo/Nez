@@ -10,8 +10,30 @@ namespace Nez
 		static MethodInfo _applyLowPassFilterMethod;
 		static MethodInfo _applyHighPassFilterMethod;
 		static MethodInfo _applyBandPassFilterMethod;
+
+		static MethodInfo _applyReverbMethod;
+
 		static readonly object[] _gainContainer = { 1.0f };
 		static readonly object[] _bandPassContainer = { 1.0f, 1.0f };
+
+
+		/// <summary>
+		/// applies a low pass filter to the SoundEffectInstance
+		/// </summary>
+		/// <returns>The low pass filter.</returns>
+		/// <param name="self">Self.</param>
+		/// <param name="hfGain">Hf gain.</param>
+		public static void applyReverb( this SoundEffectInstance self, float rvGain )
+		{
+			if( _applyReverbMethod == null )
+				_applyReverbMethod =
+ self.GetType().GetMethod( "INTERNAL_applyReverb", BindingFlags.NonPublic | BindingFlags.Instance );
+
+			_gainContainer[0] = rvGain;
+			_applyReverbMethod.Invoke( self, _gainContainer );
+		}
+
+
 
 
 		/// <summary>
